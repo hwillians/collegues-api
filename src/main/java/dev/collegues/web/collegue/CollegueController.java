@@ -25,13 +25,10 @@ public class CollegueController {
 	public List<String> ListHotels(@RequestParam Integer nom) {
 
 		List<String> listMatricules = new ArrayList<>();
-
 		List<Collegue> listCollegue = serviceCollegue.findByName(nom);
-
 		for (Collegue c : listCollegue) {
 			listMatricules.add(c.getMatricule());
 		}
-
 		return listMatricules;
 
 	}
