@@ -30,7 +30,7 @@ public class CollegueController {
 	}
 
 	@GetMapping
-	public List<String> ListHotels(@RequestParam Integer nom) {
+	public List<String> ListHotels(@RequestParam String nom) {
 
 		List<String> listMatricules = new ArrayList<>();
 		List<Collegue> listCollegue = serviceCollegue.findByName(nom);
@@ -43,7 +43,7 @@ public class CollegueController {
 	@GetMapping("/{matricule}")
 	public ResponseEntity<?> infoCollegue(@PathVariable String matricule) {
 
-		Optional<Collegue> opCollegue = serviceCollegue.findByMatricul(matricule);
+		Optional<Collegue> opCollegue = serviceCollegue.findByMatricule(matricule);
 
 		if (opCollegue.isPresent()) {
 			return ResponseEntity.ok(new reponseDtoMatricule(opCollegue.get()));

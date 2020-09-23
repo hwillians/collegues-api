@@ -35,7 +35,8 @@ public class Collegue {
 		this.matricule = UUID.randomUUID().toString();
 		this.nom = nom;
 		this.prenoms = prenoms;
-		this.email = nom.trim().replaceAll(" ", "-") + "." + prenoms.trim().replaceAll(" ", "-") + "@wow-wow.fr";
+		this.email = nom.toLowerCase().trim().replaceAll(" ", "-") + "."
+				+ prenoms.toLowerCase().trim().replaceAll(" ", "-") + "@wow-wow.fr";
 		this.dateDeNaissance = dateDeNaissance;
 		this.photoUrl = photoUrl;
 	}

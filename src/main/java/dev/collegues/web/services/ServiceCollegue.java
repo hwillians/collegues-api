@@ -19,13 +19,13 @@ public class ServiceCollegue {
 		this.collegueRepository = collegueRepository;
 	}
 
-	public List<Collegue> findByName(Integer nom) {
+	public List<Collegue> findByName(String nom) {
 
-		return collegueRepository.findAllByName(nom);
+		return collegueRepository.findAllByNom(nom);
 
 	}
 
-	public Optional<Collegue> findByMatricul(String matricule) {
+	public Optional<Collegue> findByMatricule(String matricule) {
 
 		return collegueRepository.findByMatricule(matricule);
 	}
