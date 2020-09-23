@@ -2,7 +2,9 @@ package dev.collegues.web.collegue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +32,18 @@ public class CollegueController {
 			listMatricules.add(c.getMatricule());
 		}
 		return listMatricules;
+	}
+
+	@GetMapping("/{matricule}")
+	public ResponseEntity<?> infoCollegue(String matricule) {
+
+		Optional<Collegue> opCollegue = serviceCollegue.findByMatricul(matricule);
+
+		if (opCollegue.isPresent()) {
+			return ResponseEntity.ok(opCollegue.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 
 	}
 

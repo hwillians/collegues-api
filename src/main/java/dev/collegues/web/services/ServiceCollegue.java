@@ -1,6 +1,7 @@
 package dev.collegues.web.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,13 @@ public class ServiceCollegue {
 
 	public List<Collegue> findByName(Integer nom) {
 
-		return collegueRepository.findByName(nom);
+		return collegueRepository.findAllByName(nom);
 
+	}
+
+	public Optional<Collegue> findByMatricul(String matricule) {
+
+		return collegueRepository.findByMatricule(matricule);
 	}
 
 }
