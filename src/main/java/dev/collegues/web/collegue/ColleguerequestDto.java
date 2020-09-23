@@ -1,72 +1,21 @@
-package dev.collegues.entity;
+package dev.collegues.web.collegue;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
 
-@Entity
-public class Collegue {
+public class ColleguerequestDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; // (auto-généré)
-
-	private String matricule;
-
+	@NotNull
 	private String nom;
-
+	@NotNull
 	private String prenoms;
-
+	@NotNull
 	private String email;
-
+	@NotNull
 	private LocalDate dateDeNaissance;
-
+	@NotNull
 	private String photoUrl;
-
-	public Collegue() {
-	}
-
-	public Collegue(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
-
-		this.matricule = UUID.randomUUID().toString();
-		this.nom = nom;
-		this.prenoms = prenoms;
-		this.email = nom.trim().replaceAll(" ", "-") + "." + prenoms.trim().replaceAll(" ", "-") + "@wow-wow.fr";
-		this.dateDeNaissance = dateDeNaissance;
-		this.photoUrl = photoUrl;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the matricule
-	 */
-	public String getMatricule() {
-		return matricule;
-	}
-
-	/**
-	 * @param matricule the matricule to set
-	 */
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
 
 	/**
 	 * @return the nom

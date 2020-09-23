@@ -1,19 +1,10 @@
-package dev.collegues.entity;
+package dev.collegues.web.collegue;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import dev.collegues.entity.Collegue;
 
-@Entity
-public class Collegue {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; // (auto-généré)
+public class reponseDtoMatricule {
 
 	private String matricule;
 
@@ -27,31 +18,13 @@ public class Collegue {
 
 	private String photoUrl;
 
-	public Collegue() {
-	}
-
-	public Collegue(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
-
-		this.matricule = UUID.randomUUID().toString();
-		this.nom = nom;
-		this.prenoms = prenoms;
-		this.email = nom.trim().replaceAll(" ", "-") + "." + prenoms.trim().replaceAll(" ", "-") + "@wow-wow.fr";
-		this.dateDeNaissance = dateDeNaissance;
-		this.photoUrl = photoUrl;
-	}
-
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
+	public reponseDtoMatricule(Collegue col) {
+		this.matricule = col.getMatricule();
+		this.nom = col.getNom();
+		this.prenoms = col.getPrenoms();
+		this.email = col.getEmail();
+		this.dateDeNaissance = col.getDateDeNaissance();
+		this.photoUrl = col.getPhotoUrl();
 	}
 
 	/**
