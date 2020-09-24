@@ -38,4 +38,13 @@ public class ServiceCollegue {
 		return collegueRepository.save(collegue);
 	}
 
+	@Transactional
+	public Collegue updateCollegue(String matricule, String email, String urlPhoto) {
+
+		collegueRepository.update(matricule, email, urlPhoto);
+
+		return collegueRepository.findByMatricule(matricule)
+				.orElseThrow(() -> new RuntimeException("erreur : actualisation Collegue"));
+	}
+
 }
