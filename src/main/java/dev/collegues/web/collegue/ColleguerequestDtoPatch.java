@@ -1,12 +1,12 @@
 package dev.collegues.web.collegue;
 
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
 
 public class ColleguerequestDtoPatch {
-	@NotNull
+	@NotBlank
 	private String email;
 
-	@NotNull
+	@NotBlank
 	private String photoUrl;
 
 	/**

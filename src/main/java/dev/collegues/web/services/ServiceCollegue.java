@@ -30,6 +30,7 @@ public class ServiceCollegue {
 	@Transactional
 	public Collegue creerCollegue(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
 		Collegue collegue = new Collegue(nom, prenoms, dateDeNaissance, photoUrl);
+
 		return collegueRepository.save(collegue);
 	}
 

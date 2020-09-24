@@ -2,19 +2,23 @@ package dev.collegues.web.collegue;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+
 import com.sun.istack.NotNull;
 
 public class ColleguerequestDto {
 
-	@NotNull
+	@NotBlank
 	private String nom;
-	@NotNull
+	@NotBlank
 	private String prenoms;
-	@NotNull
+
 	private String email;
 	@NotNull
+	@Past
 	private LocalDate dateDeNaissance;
-	@NotNull
+	@NotBlank
 	private String photoUrl;
 
 	/**
