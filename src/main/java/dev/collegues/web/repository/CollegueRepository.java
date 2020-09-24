@@ -11,7 +11,8 @@ import dev.collegues.entity.Collegue;
 
 public interface CollegueRepository extends JpaRepository<Collegue, Integer> {
 
-	List<Collegue> findAllByNom(String nom);
+	@Query("select c.matricule from Collegue c where c.nom=?1")
+	List<String> findAllByNom(String nom);
 
 	@Query("select c from Collegue c where c.matricule=?1")
 	Optional<Collegue> findByMatricule(String matricule);

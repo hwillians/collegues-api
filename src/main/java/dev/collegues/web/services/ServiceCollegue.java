@@ -19,30 +19,23 @@ public class ServiceCollegue {
 		this.collegueRepository = collegueRepository;
 	}
 
-	public List<Collegue> findByName(String nom) {
-
+	public List<String> findByName(String nom) {
 		return collegueRepository.findAllByNom(nom);
-
 	}
 
 	public Optional<Collegue> findByMatricule(String matricule) {
-
 		return collegueRepository.findByMatricule(matricule);
 	}
 
 	@Transactional
 	public Collegue creerCollegue(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
-
 		Collegue collegue = new Collegue(nom, prenoms, dateDeNaissance, photoUrl);
-
 		return collegueRepository.save(collegue);
 	}
 
 	@Transactional
 	public Collegue updateCollegue(String matricule, String email, String urlPhoto) {
-
 		collegueRepository.update(matricule, email, urlPhoto);
-
 		return collegueRepository.findByMatricule(matricule)
 				.orElseThrow(() -> new RuntimeException("erreur : actualisation Collegue"));
 	}

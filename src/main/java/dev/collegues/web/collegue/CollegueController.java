@@ -1,6 +1,5 @@
 package dev.collegues.web.collegue;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,13 +30,10 @@ public class CollegueController {
 	}
 
 	@GetMapping
-	public List<String> ListHotels(@RequestParam String nom) {
+	public List<String> ListCollegues(@RequestParam String nom) {
 
-		List<String> listMatricules = new ArrayList<>();
-		List<Collegue> listCollegue = serviceCollegue.findByName(nom);
-		for (Collegue c : listCollegue) {
-			listMatricules.add(c.getMatricule());
-		}
+		List<String> listMatricules = serviceCollegue.findByName(nom);
+
 		return listMatricules;
 	}
 
