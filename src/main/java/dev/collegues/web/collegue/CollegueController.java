@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import dev.collegues.entity.Collegue;
 import dev.collegues.web.services.ServiceCollegue;
 
 @RestController
+@CrossOrigin
 @RequestMapping("collegues")
 public class CollegueController {
 
@@ -60,16 +62,17 @@ public class CollegueController {
 		} else {
 			return ResponseEntity.badRequest().body("tous les champs sont obligatoires !");
 		}
-
 	}
 
 	@PatchMapping("/{matricule}")
 	public ResponseEntity<?> editUser(@PathVariable String matricule,
 			@RequestBody @Valid ColleguerequestDtoPatch collegueDto, BindingResult resValid) {
-
-		Collegue editCollegue = serviceCollegue.updateCollegue(matricule, collegueDto.getEmail(),
-				collegueDto.getPhotoUrl());
-		return ResponseEntity.ok(editCollegue);
+		if (!resValid.hasErrors()) {
+			Collegue editCollegue = serviceCollegue.updateCollegue(matricule, collegueDto.getEmail(),
+					collegueDto.getPhotoUrl());
+			return ResponseEntity.ok(editCollegue);
+		} else {
+			return ResponseEntity.badRequest().body("tous les champs sont obligatoires !");
+		}
 	}
-
 }
