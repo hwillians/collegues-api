@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.collegues.entity.Collegue;
-import dev.collegues.web.services.ServiceCollegue;
+import dev.collegues.services.ServiceCollegue;
 
 @RestController
 @CrossOrigin
@@ -29,6 +29,14 @@ public class CollegueController {
 
 	public CollegueController(ServiceCollegue serviceCollegue) {
 		this.serviceCollegue = serviceCollegue;
+	}
+
+	@GetMapping("/all")
+	public List<CollegueReponseDto> allCollegues() {
+
+		List<CollegueReponseDto> listCollegues = serviceCollegue.findAll();
+
+		return listCollegues;
 	}
 
 	@GetMapping

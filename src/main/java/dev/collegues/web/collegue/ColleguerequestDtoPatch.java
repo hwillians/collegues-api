@@ -1,9 +1,12 @@
 package dev.collegues.web.collegue;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class ColleguerequestDtoPatch {
+
 	@NotBlank
+	@Email
 	private String email;
 
 	@NotBlank

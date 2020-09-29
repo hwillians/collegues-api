@@ -13,7 +13,7 @@ public class Collegue {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id; // (auto-généré)
+	private Integer id;
 
 	private String matricule;
 
