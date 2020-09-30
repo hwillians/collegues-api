@@ -50,13 +50,13 @@ public class NoteController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> effacerNotes(@PathVariable Integer id) {
 
-		Boolean isRemoved = noteServ.delateNote(id);
+		List<NoteReponseDto> isRemoved = noteServ.delateNote(id);
 
-		if (!isRemoved) {
+		if (isRemoved.isEmpty()) {
 			return new ResponseEntity<>("Acune note ne corresponde pas à l'id : " + id, HttpStatus.NOT_FOUND);
 		}
 
-		return new ResponseEntity<>("la note avec l'id " + id + " à été effacée", HttpStatus.OK);
+		return new ResponseEntity<>(isRemoved, HttpStatus.OK);
 
 	}
 }

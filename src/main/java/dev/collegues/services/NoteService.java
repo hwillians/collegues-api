@@ -3,7 +3,6 @@ package dev.collegues.services;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -49,15 +48,13 @@ public class NoteService {
 		return listReponse;
 	}
 
-	public Boolean delateNote(Integer id) {
+	public List<NoteReponseDto> delateNote(Integer id) {
 
-		Optional<Note> noteOp = noteRep.findById(id);
-		if (noteOp.isEmpty()) {
-			return false;
-		} else {
-			noteRep.delete(noteOp.get());
-			return true;
-		}
+		Note note = noteRep.findById(id).orElseThrow(() -> new RuntimeException("erreur :suppresion de note"));
+
+		noteRep.delete(note);
+
+		return listerNotes(note.getCollegue().getMatricule());
 	}
 
 }

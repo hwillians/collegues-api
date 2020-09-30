@@ -9,7 +9,7 @@ import dev.collegues.entity.Note;
 
 public interface NoteRepository extends JpaRepository<Note, Integer> {
 
-	@Query("select n from Note n JOIN FETCH n.collegue c where c.matricule =?1 ")
+	@Query("select n from Note n join fetch n.collegue c where c.matricule =?1")
 	List<Note> findAllByMatricule(String matricule);
 
 }
